@@ -1,0 +1,10 @@
+# -- Project Information --
+title: Skrillx's Site
+url: "https://skrillx13.github.io"
+
+# -- Configuration --
+source: ./content
+
+# -- Plugins --
+plugins:
+  - jekyll-feed

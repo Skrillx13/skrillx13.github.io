@@ -1,0 +1,66 @@
+@import 'variables';
+
+/// Apply styles only for dark mode
+/// $target should generally be either & or null (null for global, & for local)
+@mixin darkMode {
+	// When the user did not touch the button: use the browser preferences
+	@media(prefers-color-scheme: dark) {
+		@at-root body:not(.light-mode) & {
+			@content
+		}
+	}
+	// When the user touched the button: use the JS-set class
+	@at-root body.dark-mode & {
+		@content;
+	}
+}
+
+@mixin darkModeAtRoot {
+	// When the user did not touch the button: use the browser preferences
+	@media(prefers-color-scheme: dark) {
+		@at-root body:not(.light-mode) {
+			@content
+		}
+	}
+	// When the user touched the button: use the JS-set class
+	@at-root body.dark-mode {
+		@content;
+	}
+}
+
+/// Apply styles only for light mode
+/// $target should generally be either & or null (null for global, & for local)
+@mixin lightMode($target) {
+	@media(prefers-color-scheme: light) {
+		@at-root body:not(.dark-mode) #{$target} {
+			@content
+		}
+	}
+	@at-root body.light-mode #{$target} {
+		@content
+	}
+}
+
+@mixin mobile {
+	@media only screen and (max-width: $screen-mobile-max) {
+		@content;
+	}
+}
+
+@mixin notMobile {
+    @media only screen and (min-width: $screen-tablet-min) {
+        @content;
+    }
+}
+
+@mixin tablet {
+	@media only screen and (min-width: $screen-tablet-min) and (max-width: $screen-tablet-max) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (min-width: $screen-desktop-min) {
+		@content;
+	}
+}

@@ -1,0 +1,6 @@
+$screen-mobile-min: 480px;
+$screen-tablet-min: 768px;
+$screen-desktop-min: 1024px;
+
+$screen-mobile-max: $screen-tablet-min - 1;
+$screen-tablet-max: $screen-desktop-min - 1;

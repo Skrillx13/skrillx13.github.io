@@ -1,0 +1,48 @@
+{% capture editor-id %}{{ include.type | replace: "_", "-" }}-editor-{{ include.name | slugify }}{% endcapture %}
+<div class="data-info-entry">
+    <span class="data-editor-toggle hidden">
+        <input id="{{ editor-id }}-toggle" type="checkbox"
+               data-target="#{{ editor-id }}" aria-expanded="false" aria-controls="{{ editor-id }}"/>
+        <label for="{{ editor-id }}-toggle" data-toggle="tooltip" title="Toggle Editor"><span>📝</span></label>
+    </span>
+    <div>
+        <h5 id="{{ include.type }}-tag-{{ include.name | remove: ".json" | slugify }}" class="no_toc">
+            <a href="{{ include.path }}/{{ include.name }}" class="tag-name">{{ include.name }}</a>
+            {% if include.tag.since %}<span class="badge badge-secondary">&gt; {{ include.tag.since }}</span>{% endif %}
+            {% if include.tag.removed %}<span class="badge badge-danger">&lt; {{ include.tag.removed }}</span>{% endif %}
+            {% if include.tag.upcoming %}<span class="badge badge-warning">Upcoming</span>{% endif %}
+        </h5>
+        <p class="data-description">{{ include.tag.description | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+    </div>
+</div>
+<div id="{{ editor-id }}" class="tag-editor collapse" data-tag-path="{{ include.folder }}/{{ include.name }}"
+     data-tag-modid="{{ include.modid }}">
+    <!-- Editable table -->
+    <div class="card">
+        <h3 class="no_toc card-header font-weight-bold py-4 tag-editor-header">
+            {{ include.name }}
+            <span class="table-add float-right mb-3 mr-2"><button type="button"
+                                                                  class="btn btn-success btn-rounded btn-sm my-0">New entry</button></span>
+            <input type="checkbox" hidden class="btn-check tag-replace" name="options-outlined"
+                   id="{{ editor-id }}-replace" autocomplete="off">
+            <label class="btn btn-xs" title="Delete previous values" for="{{ editor-id }}-replace">Replace
+                existing</label>
+            <button class="help-btn" data-toggle="tooltip" data-placement="right" title="Each row can refer to either another tag (looking like '#example:test'), or a single entry (looking like 'example:test'). Note that two tags cannot simultaneously refer to each other.">?</button>
+        </h3>
+        <div class="card-body">
+            <div class="table-editable">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                    <tr>
+                        <th class="text-center">{{ include.type | replace: "_", " " | capitalize }} Identifier</th>
+                        <th class="text-center table-buttons">Sort</th>
+                        <th class="text-center table-buttons">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

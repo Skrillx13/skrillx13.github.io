@@ -1,0 +1,16 @@
+<div class="menu-grid mod-listing">
+{%- for page in include.mods %}
+	<div class="menu-grid-item">
+		{% responsive_image_block %}
+			path: {{ page.icon }}
+			alt: "{{ page.title }} icon"
+			width: 150
+			height: 150
+			class: "mod-icon{% if page.pixel_art %} pixel-art{% endif %}"
+		{% endresponsive_image_block %}
+		<h2 class="home">{{ page.title }}</h2>
+		{{ page.content | markdownify }}
+		<a href="{{ page.link }}" title="{{ page.title }}" class="btn menu-grid-btn btn-sm btn-primary">Learn More</a>
+	</div>
+{%- endfor %}
+</div>
