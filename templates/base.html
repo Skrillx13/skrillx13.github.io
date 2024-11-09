@@ -1,0 +1,16 @@
+<!-- Base template where all the other templates are pulling from. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tuff/tuff.css') }}">
+    <title>Placeholder</title>
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
