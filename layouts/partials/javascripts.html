@@ -1,0 +1,36 @@
+<!-- MathJax Script -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- AnchorJS Script -->
+{{ if not .IsHome }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
+<script>
+
+    anchors.options = {
+        icon: '#'
+      };
+    anchors.add();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const anchorLinks = document.querySelectorAll('.anchorjs-link');
+  
+      anchorLinks.forEach(link => {
+        link.addEventListener('click', event => {
+          event.preventDefault();
+  
+          const targetId = link.getAttribute('href').slice(1);
+          const targetElement = document.getElementById(targetId);
+  
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+</script>  
+{{ end }}
+<!-- Linked JavaScripts -->
+{{ $js := resources.Get "js/main.js" | resources.Minify }}
+<script src="{{ $js.Permalink }}"></script>

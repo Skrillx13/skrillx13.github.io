@@ -1,0 +1,26 @@
+# -- Website Information --
+title: Skrillx's Site
+baseURL: https://skrillx13.github.io
+languageCode: en-us
+
+# -- Website Configuration --
+params:
+  homeIntroTitle: Hi!
+  homeIntroContent: >
+    I am an **aspiring** software engineer, and I specialize in web development. I'm particularly good at Static Site
+    Generation (for more info you can check out [my skills](/about/my-skills/)), and I often spend my time developing.
+  menu:
+    - name: Home
+      url: /
+    - name: About
+      url: /about/
+    - name: Projects
+      url: /projects/
+    - name: Blog
+      url: /blog/
+  social:
+    - name: github
+      url: https://github.com/Skrillx13
+    - name: twitter
+      url: https://x.com/Skrillx_13
+  theme: light

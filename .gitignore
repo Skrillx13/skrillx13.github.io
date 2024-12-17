@@ -1,0 +1,8 @@
+# -- Website Packages --
+.hugo_build.lock
+public
+resources
+
+# -- Misc --
+.vscode
+.DS_Store

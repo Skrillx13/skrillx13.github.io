@@ -1,0 +1,9 @@
+{{ define "main" }}
+
+{{ if not .IsHome }}
+{{ partial "breadcrumbs.html" . }}
+{{ end }}
+
+<h1>{{ .Page.Title }}</h1>
+{{ .Content }}
+{{ end }}
